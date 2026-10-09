@@ -115,42 +115,39 @@ function demo(){
 
 async function parseFit(file){
  $("status").textContent="Чета FIT файла…";
- const buf=await file.arrayBuffer(),u=new Uint8Array(buf);
- // Минимален FIT parser за стандартни definition/data messages.
- let pos=u[0], defs={}, records=[], sessions=[];
- const dv=new DataView(buf);
+ const buf=await file.arrayBuffer(),u=new Uint8Array(buf),dv=new DataView(buf);
+ if(u.length<16||String.fromCharCode(...u.slice(8,12))!=='.FIT')throw Error("Невалиден FIT файл.");
+ const end=Math.min(u.length-2,u[0]+dv.getUint32(4,true));let pos=u[0],defs={},records=[],sessions=[],laps=[],lastTs=null;
  function val(off,size,base,little){
-   try{
-    if(base===0||base===2||base===10||base===13){let v=u[off];return v===255?null:v}
-    if(base===1){let v=dv.getInt8(off);return v===127?null:v}
-    if(base===132||base===139){let v=dv.getUint16(off,little);return v===65535?null:v}
-    if(base===131){let v=dv.getInt16(off,little);return v===32767?null:v}
-    if(base===134||base===140){let v=dv.getUint32(off,little);return v===4294967295?null:v}
-    if(base===133){let v=dv.getInt32(off,little);return v===2147483647?null:v}
-    if(base===136)return dv.getFloat32(off,little); if(base===137)return dv.getFloat64(off,little)
-   }catch(e){} return null
+  const t=base&31;if(off+size>u.length)return null;
+  if(size===1){const v=u[off];return v===255||(t===1&&v===127)?null:t===1?dv.getInt8(off):v}
+  if(size===2){const v=t===3?dv.getInt16(off,little):dv.getUint16(off,little);return v===(t===3?32767:65535)?null:v}
+  if(size===4){if(t===8){const v=dv.getFloat32(off,little);return Number.isFinite(v)?v:null}const v=t===5?dv.getInt32(off,little):dv.getUint32(off,little);return v===(t===5?2147483647:4294967295)?null:v}
+  if(size===8&&t===9){const v=dv.getFloat64(off,little);return Number.isFinite(v)?v:null}return null
  }
- while(pos<u.length-2){
-  let h=u[pos++],compressed=h&128;
-  if(compressed){let local=(h>>5)&3,def=defs[local];if(!def)break;let obj={};for(let f of def.fields){obj[f.num]=val(pos,f.size,f.base,def.little);pos+=f.size}if(def.global===20)records.push(obj);continue}
-  let isDef=h&64,local=h&15;
-  if(isDef){
-   pos++;let arch=u[pos++],little=arch===0,global=little?dv.getUint16(pos,true):dv.getUint16(pos,false);pos+=2;let nf=u[pos++],fields=[];
-   for(let i=0;i<nf;i++){fields.push({num:u[pos],size:u[pos+1],base:u[pos+2]&31});pos+=3}
-   defs[local]={little,global,fields};continue
+ while(pos<end){
+  const h=u[pos++],compressed=!!(h&128),local=compressed?(h>>5)&3:h&15;
+  if(!compressed&&(h&64)){
+   pos++;const little=u[pos++]===0,global=dv.getUint16(pos,little);pos+=2;
+   const n=u[pos++],fields=[];for(let i=0;i<n;i++){fields.push({num:u[pos],size:u[pos+1],base:u[pos+2]});pos+=3}
+   let devSize=0;if(h&32){const nd=u[pos++];for(let i=0;i<nd;i++){devSize+=u[pos+1];pos+=3}}
+   defs[local]={little,global,fields,devSize};continue
   }
-  let def=defs[local];if(!def)break;let obj={};for(let f of def.fields){obj[f.num]=val(pos,f.size,f.base,def.little);pos+=f.size}
-  if(def.global===20)records.push(obj);if(def.global===18)sessions.push(obj)
+  const def=defs[local];if(!def)throw Error("Липсва FIT дефиниция.");
+  const obj={};for(const f of def.fields){obj[f.num]=val(pos,f.size,f.base,def.little);pos+=f.size}pos+=def.devSize;
+  if(compressed){const offset=h&31;if(lastTs!=null){let ts=(lastTs&~31)+offset;if(ts<lastTs)ts+=32;obj[253]=ts;lastTs=ts}}
+  else if(obj[253]!=null)lastTs=obj[253];
+  if(def.global===20)records.push(obj);if(def.global===18)sessions.push(obj);if(def.global===19)laps.push(obj)
  }
- if(!records.length&&!sessions.length)throw new Error("Не намерих стандартни FIT record/session данни.");
- let hr=records.map(r=>r[3]).filter(v=>v&&v<250), dt=hr.map(()=>1),s=sessions[0]||{};
- let avg=s[16]|| (hr.length?Math.round(hr.reduce((a,b)=>a+b)/hr.length):null),max=s[17]|| (hr.length?Math.max(...hr):null);
- let duration=s[8]!=null?s[8]/1000:records.length, calories=s[11]??null;
- let ts=s[253]||records[0]?.[253],date=ts?new Date((ts+631065600)*1000).toLocaleString("bg-BG"):"—";
+ if(!records.length&&!sessions.length)throw Error("Не намерих FIT record/session данни.");
+ const s=sessions.at(-1)||{},hr=records.map(r=>r[3]).filter(v=>v>30&&v<250),dt=hr.map(()=>1);
+ const avg=s[16]??(hr.length?Math.round(hr.reduce((a,b)=>a+b,0)/hr.length):null),max=s[17]??(hr.length?Math.max(...hr):null);
+ const duration=s[8]!=null?s[8]/1000:(s[7]!=null?s[7]/1000:records.length);
+ const lapCalories=laps.reduce((sum,l)=>sum+(l[11]||0),0),calories=s[11]??(lapCalories||null);
+ const ts=s[2]??records[0]?.[253]??s[253],date=ts!=null?new Date((ts+631065600)*1000).toLocaleString("bg-BG"):"—";
  return {key:file.name+"-"+file.size+"-"+file.lastModified,date,duration,avgHr:avg,maxHr:max,calories,aerobic:null,anaerobic:null,load:null,hr,dt}
 }
-
-$("fitFile").addEventListener("change",async e=>{let f=e.target.files[0];if(!f)return;try{let x=await parseFit(f);render(x);$("status").textContent=`Зареден: ${f.name}. Ако някои Garmin показатели са „—“, те не са налични чрез минималния parser в тази версия.`}catch(err){$("status").textContent="Не успях да прочета този FIT файл: "+err.message+" Качи файла тук в ChatGPT и ще адаптирам parser-а към него."}});
+$("fitFile").addEventListener("change",async e=>{let f=e.target.files[0];if(!f)return;try{let x=await parseFit(f);render(x);$("status").textContent=`Зареден: ${f.name}. Training Effect и Training Load не се показват без надеждно разпознати стойности.`}catch(err){$("status").textContent="Не успях да прочета този FIT файл: "+err.message+" Качи файла тук в ChatGPT и ще адаптирам parser-а към него."}});
 $("demoBtn").onclick=demo;$("clearBtn").onclick=()=>{if(confirm("Да изтрия ли локалната история?")){localStorage.removeItem("tennisHistory");renderHistory()}};
 renderHistory();
 </script>
