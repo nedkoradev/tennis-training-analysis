@@ -30,7 +30,7 @@ table{width:100%;border-collapse:collapse}th,td{padding:11px;border-bottom:1px s
    <div style="font-size:64px;line-height:1" aria-label="Тенис">🎾</div>
    <div><h1>🎾 Tennis Training Analysis</h1><div class="sub">Персонален анализ на моите тенис тренировки</div></div>
   </div>
-  <div class="pill">Garmin FIT • обработка локално</div>
+  <div class="pill">Garmin FIT • обработка локално • v1.0.1</div>
  </div>
 
  <img class="court-hero" src="assets/tennis-court.svg" alt="Тенис корт, погледнат от високо">
@@ -147,7 +147,7 @@ async function parseFit(file){
  const ts=s[2]??records[0]?.[253]??s[253],date=ts!=null?new Date((ts+631065600)*1000).toLocaleString("bg-BG"):"—";
  return {key:file.name+"-"+file.size+"-"+file.lastModified,date,duration,avgHr:avg,maxHr:max,calories,aerobic:null,anaerobic:null,load:null,hr,dt}
 }
-$("fitFile").addEventListener("change",async e=>{let f=e.target.files[0];if(!f)return;try{let x=await parseFit(f);render(x);$("status").textContent=`Зареден: ${f.name}. Training Effect и Training Load не се показват без надеждно разпознати стойности.`}catch(err){$("status").textContent="Не успях да прочета този FIT файл: "+err.message+" Качи файла тук в ChatGPT и ще адаптирам parser-а към него."}});
+$("fitFile").addEventListener("change",async e=>{let f=e.target.files[0];if(!f)return;try{let x=await parseFit(f);render(x);$("status").textContent=`Зареден: ${f.name}. Калории и дата се извличат от FIT. Training Effect и Training Load не са налични като стандартни стойности в този файл.`}catch(err){$("status").textContent="Не успях да прочета този FIT файл: "+err.message+" Качи файла тук в ChatGPT и ще адаптирам parser-а към него."}});
 $("demoBtn").onclick=demo;$("clearBtn").onclick=()=>{if(confirm("Да изтрия ли локалната история?")){localStorage.removeItem("tennisHistory");renderHistory()}};
 renderHistory();
 </script>
