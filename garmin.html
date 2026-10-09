@@ -30,7 +30,7 @@ table{width:100%;border-collapse:collapse}th,td{padding:11px;border-bottom:1px s
    <div style="font-size:64px;line-height:1" aria-label="Тенис">🎾</div>
    <div><h1>🎾 Tennis Training Analysis</h1><div class="sub">Персонален анализ на моите тенис тренировки</div></div>
   </div>
-  <div class="pill">Garmin FIT • обработка локално • v1.0.2</div>
+  <div class="pill">Garmin FIT • обработка локално • v1.0.3</div>
  </div>
 
  <img class="court-hero" src="assets/tennis-court.svg" alt="Тенис корт, погледнат от високо">
@@ -145,9 +145,9 @@ async function parseFit(file){
  const duration=s[8]!=null?s[8]/1000:(s[7]!=null?s[7]/1000:records.length);
  const lapCalories=laps.reduce((sum,l)=>sum+(l[11]||0),0),calories=s[11]??(lapCalories||null);
  const ts=s[2]??records[0]?.[253]??s[253],date=ts!=null?new Date((ts+631065600)*1000).toLocaleString("bg-BG"):"—";
- return {key:file.name+"-"+file.size+"-"+file.lastModified,date,duration,avgHr:avg,maxHr:max,calories,aerobic:s[24]!=null&&s[24]!==255?(s[24]/10).toFixed(1):null,anaerobic:s[137]!=null&&s[137]!==255?(s[137]/10).toFixed(1):null,load:null,hr,dt}
+ return {key:file.name+"-"+file.size+"-"+file.lastModified,date,duration,avgHr:avg,maxHr:max,calories,aerobic:s[24]!=null&&s[24]!==255?(s[24]/10).toFixed(1):null,anaerobic:s[137]!=null&&s[137]!==255?(s[137]/10).toFixed(1):null,load:s[168]!=null&&Number.isFinite(s[168])?Math.round(s[168]/65536):null,hr,dt}
 }
-$("fitFile").addEventListener("change",async e=>{let f=e.target.files[0];if(!f)return;try{let x=await parseFit(f);render(x);$("status").textContent=`Зареден: ${f.name}. Калории и дата се извличат от FIT. Training Effect се прочита от Garmin session. Exercise Load остава празен, ако не е надеждно разпознат.`}catch(err){$("status").textContent="Не успях да прочета този FIT файл: "+err.message+" Качи файла тук в ChatGPT и ще адаптирам parser-а към него."}});
+$("fitFile").addEventListener("change",async e=>{let f=e.target.files[0];if(!f)return;try{let x=await parseFit(f);render(x);$("status").textContent=`Зареден: ${f.name}. Калории и дата се извличат от FIT. Training Effect се прочита от Garmin session. Exercise Load се извлича от FIT session поле 168 (скала 65536).`}catch(err){$("status").textContent="Не успях да прочета този FIT файл: "+err.message+" Качи файла тук в ChatGPT и ще адаптирам parser-а към него."}});
 $("demoBtn").onclick=demo;$("clearBtn").onclick=()=>{if(confirm("Да изтрия ли локалната история?")){localStorage.removeItem("tennisHistory");renderHistory()}};
 renderHistory();
 </script>
