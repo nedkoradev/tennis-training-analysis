@@ -12,7 +12,7 @@
 import {initializeApp} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 import {getAuth,GoogleAuthProvider,signInWithPopup,signOut,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 import {getFirestore,doc,onSnapshot,setDoc} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-const app=initializeApp({apiKey:"AIzaSyA4sahKyvgnvX2cOzbGCLX0iSOEXq7KS8qY",authDomain:"tennis-training-analysis.firebaseapp.com",projectId:"tennis-training-analysis",storageBucket:"tennis-training-analysis.firebasestorage.app",messagingSenderId:"618952540741",appId:"1:618952540741:web:03fd5888ba355326b7592c"});
+const app=initializeApp({apiKey:"AIzaSyA4saHkVqnvX2cOzbGClX0jSOEXq7KS8qY",authDomain:"tennis-training-analysis.firebaseapp.com",projectId:"tennis-training-analysis",storageBucket:"tennis-training-analysis.firebasestorage.app",messagingSenderId:"618952540741",appId:"1:618952540741:web:03fd5888ba355326b7592c"});
 const auth=getAuth(app),db=getFirestore(app);let user=null,ready=false,unsub=null,loading=false,timer=null;const status=t=>el("cloudStatus").textContent=t;
 const KEY='tta_matches_v1',PK='tta_players_v1',el=id=>document.getElementById(id);
 let matches=read(KEY),players=read(PK),editing=null,month=new Date();function read(k){try{const x=JSON.parse(localStorage.getItem(k)||'[]');return Array.isArray(x)?x:[]}catch{return []}}
