@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="bg">
-<head>
+<head><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#07111f"><link rel="icon" type="image/svg+xml" href="/app-icon.svg"><link rel="apple-touch-icon" href="/app-icon.svg">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Garmin анализ | Tennis Training Analysis</title>
@@ -151,5 +151,5 @@ $("fitFile").addEventListener("change",async e=>{let f=e.target.files[0];if(!f)r
 $("demoBtn").onclick=demo;$("clearBtn").onclick=()=>{if(confirm("Да изтрия ли локалната история?")){localStorage.removeItem("tennisHistory");renderHistory()}};
 renderHistory();
 </script>
-</body>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(console.warn))}</script></body>
 </html>
