@@ -318,9 +318,9 @@ test('slow sync keeps a second local edit queued without replacing it with a sna
   assert.equal(view.storage.has(pendingKey('a')), false);
 });
 
-test('home renders the six latest matches and preserves the full history', () => {
+test('home renders the eight latest matches and preserves the full history', () => {
   const remote = cloud();
-  const matches = [2, 7, 1, 5, 3, 6, 4].map(day => ({
+  const matches = [2, 9, 7, 1, 5, 3, 8, 6, 4].map(day => ({
     id: 'match-' + day,
     playerId: 'p1',
     date: '2026-01-0' + day,
@@ -336,9 +336,9 @@ test('home renders the six latest matches and preserves the full history', () =>
   remote.emit(ref('a'));
   const recent = view.element('recent');
   const ids = [...recent.innerHTML.matchAll(/data-match-id="(.*?)"/g)].map(match => match[1]);
-  assert.deepEqual(ids, [7, 6, 5, 4, 3, 2].map(day => 'match-' + day));
+  assert.deepEqual(ids, [9, 8, 7, 6, 5, 4, 3, 2].map(day => 'match-' + day));
   assert.match(recent.innerHTML, /6:4, 6:7, TB 12:10/);
-  assert.equal((view.element('historyList').innerHTML.match(/class="match-tile"/g) || []).length, 7);
+  assert.equal((view.element('historyList').innerHTML.match(/class="match-tile"/g) || []).length, 9);
   recent.onclick({ target: { closest: () => ({ dataset: { matchId: 'match-7' } }) } });
   assert.equal(view.element('matchDetails').open, true);
   assert.match(view.element('matchDetailsBody').innerHTML, /139 bpm/);
