@@ -1,66 +1,176 @@
 <!doctype html><html lang="bg"><head><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#07111f"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="My Tennis Diary"><link rel="icon" type="image/svg+xml" href="/app-icon.svg"><link rel="apple-touch-icon" href="/app-icon.svg"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Моят тенис дневник</title><style>
 :root{font-family:system-ui,Arial;background:#07111f;color:#edf5ff}*{box-sizing:border-box}body{margin:0}.wrap{max-width:1050px;margin:auto;padding:20px}header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}h1{margin:8px 0}a{color:#a8ff3e}.tabs,.actions{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}button,.btn{border:0;border-radius:10px;padding:12px 15px;background:#a8ff3e;color:#07111f;font-weight:700;cursor:pointer}.secondary{background:#20344c;color:white}.tab.active{outline:2px solid #a8ff3e}.card{background:#122238;border:1px solid #30445d;border-radius:16px;padding:18px;margin:14px 0}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.num{font-size:30px;font-weight:800}small,.muted{color:#9db0c7}label{display:block;margin:12px 0 5px}input,select,textarea{width:100%;background:#071625;border:1px solid #4a6077;color:white;border-radius:9px;padding:11px;font:inherit}input[type=checkbox]{width:auto}section[hidden]{display:none!important}.sets{display:grid;grid-template-columns:75px 1fr 1fr auto;gap:8px;align-items:center;margin:8px 0}.item{border-bottom:1px solid #30445d;padding:12px 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.filters{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.danger{color:#ffb1b1}.result{font-weight:800;color:#a8ff3e}.result.loss-result{color:#ff7777}.result.draw-result{color:#e9c66b}table{width:100%;border-collapse:collapse}td,th{padding:9px;text-align:left;border-bottom:1px solid #30445d}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.day{padding:9px 2px;text-align:center;border-radius:8px;background:#20344c;font-size:13px}.played{background:#a8ff3e;color:#07111f;font-weight:bold}.loss{background:#f0a4a4;color:#07111f}@media(max-width:650px){.grid{grid-template-columns:repeat(2,1fr)}.filters{grid-template-columns:1fr}.sets{grid-template-columns:50px 1fr 1fr auto}.wrap{padding:12px}}
-input[type=date]{color-scheme:dark;min-width:0}.date-control{display:flex;gap:8px;align-items:stretch}.date-control input{flex:1;min-width:0}.date-open{flex:none;min-width:52px;font-size:22px;padding:8px 12px;touch-action:manipulation}.date-control{position:relative}.date-control input[type=date]{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}.date-display{flex:1;min-width:0;text-align:left;background:#071625;border:1px solid #4a6077;color:white;font:inherit;font-weight:400}.date-popup{position:absolute;top:100%;left:0;z-index:1000;width:min(310px,90vw);background:#15263b;border:1px solid #60758c;border-radius:12px;padding:12px;box-shadow:0 12px 30px #0009}.date-head{display:flex;align-items:center;justify-content:space-between;gap:6px}.date-head button{padding:7px 12px}.date-days{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-top:9px}.date-days button{padding:8px 0;border-radius:6px;background:#20344c;color:white;font-size:13px}.date-days button.selected{background:#a8ff3e;color:#07111f}.date-days span{text-align:center;font-size:12px;color:#9db0c7;padding:5px 0}.account-menu{margin-left:auto;display:flex;align-items:center}.account-info{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;color:#a8ff3e}.account-info button{padding:9px 12px}@media(max-width:650px){.account-menu{margin-left:0;width:100%}}@media(max-width:650px){.wrap{padding:10px}header{gap:5px}header h1{font-size:clamp(23px,6vw,30px);margin:5px 0}header small{font-size:11px}header a{font-size:13px}.tabs{gap:5px;margin:12px 0}.tabs .tab{padding:9px 10px;font-size:12px;border-radius:8px}.account-menu{width:auto;margin-left:0}.account-info{font-size:12px;gap:7px}.account-info button,.account-menu>button{padding:8px 10px;font-size:12px}.grid{gap:8px}.grid .card{padding:12px;margin:6px 0;border-radius:12px}.grid .num{font-size:25px}.card{padding:13px;margin:10px 0;border-radius:12px}.card h2{font-size:22px;margin:8px 0 14px}.item{padding:9px 0;font-size:13px;gap:8px}.item button{padding:8px 10px;font-size:12px}button,.btn{padding:10px 12px;font-size:13px}input,select,textarea{padding:9px;font-size:16px}.date-days button{font-size:13px;padding:8px 0}} .result.win-result,.win-number{color:#a8ff3e!important}.result.loss-result,.loss-number{color:#ff666b!important}.result.draw-result{color:#e9c66b!important}@media(max-width:650px){.wrap{padding:8px}header h1{font-size:22px;line-height:1.2}.tabs{gap:4px;margin:9px 0}.tabs .tab{padding:7px 8px;font-size:11px}.account-info{font-size:11px}.account-info button,.account-menu>button{padding:7px 9px;font-size:11px}.grid{gap:7px}.grid .card{padding:9px 11px;margin:4px 0;border-radius:10px}.grid .num{font-size:23px}.grid small{font-size:11px}.card{padding:11px;margin:8px 0;border-radius:11px}.card h2{font-size:19px;margin:7px 0 10px}.item{padding:8px 0;font-size:12px;gap:6px}.item button{padding:7px 9px;font-size:11px}button,.btn{padding:8px 10px;font-size:12px}.date-open{min-width:40px;padding:6px 8px;font-size:17px}} @media(max-width:650px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:5px!important}.grid .card{min-width:0;padding:9px 5px!important;margin:4px 0!important}.grid .card small{font-size:10px!important;overflow-wrap:anywhere}.grid .num{font-size:22px!important}} @media(max-width:650px){.tabs{display:flex;flex-wrap:nowrap;align-items:center;gap:3px;width:100%;margin:9px 0}.tabs .tab{flex:1 1 auto;min-width:0;padding:8px 4px;font-size:clamp(10px,2.8vw,12px);white-space:nowrap}.tabs #languageToggle{order:0!important;margin-left:0!important;flex:0 0 34px;padding:8px 3px!important;font-size:17px!important}.tabs [data-page="settings"]{flex:0 0 34px;font-size:17px!important;padding:7px 3px}.tabs .account-menu{flex:0 0 auto;min-width:0}.tabs .account-info{gap:3px}.tabs #accountName{display:none}.tabs #login,.tabs #logout{padding:8px 5px;font-size:10px}} .home-bottom-actions{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:12px 0}.home-bottom-actions .btn{text-decoration:none;display:inline-flex;align-items:center;justify-content:center;text-align:center}.home-bottom-actions button{min-width:0}@media(max-width:650px){header{flex-wrap:nowrap}header>div{min-width:0}header #languageToggle{flex:none;font-size:20px!important;padding:7px 11px!important}.home-bottom-actions{gap:8px}.home-bottom-actions .btn,.home-bottom-actions button{font-size:12px;padding:10px 9px}} .tabs{align-items:stretch}.tabs>.tab,.tabs>.account-menu,.tabs>.account-menu>button,.tabs .account-info,.tabs .account-info>button{min-height:38px;box-sizing:border-box}.tabs>.tab{display:inline-flex;align-items:center;justify-content:center;line-height:1.15}.tabs>.account-menu{align-items:stretch}.tabs .account-info{align-items:stretch}.tabs .account-info>button,.tabs>.account-menu>button{height:100%;display:inline-flex;align-items:center;justify-content:center}@media(max-width:650px){.tabs>.tab,.tabs>.account-menu,.tabs>.account-menu>button,.tabs .account-info,.tabs .account-info>button{height:36px;min-height:36px}.tabs>.tab{padding-top:4px;padding-bottom:4px}} .tabs .tab.active{outline:none!important;box-shadow:inset 0 0 0 2px #a8ff3e}.tabs>.tab{height:38px!important;min-height:38px!important;max-height:38px!important;box-sizing:border-box!important;vertical-align:middle!important}@media(max-width:650px){.tabs{align-items:center!important}.tabs>.tab,.tabs>.account-menu,.tabs>.account-menu>button,.tabs .account-info,.tabs .account-info>button{height:36px!important;min-height:36px!important;max-height:36px!important;box-sizing:border-box!important}.tabs>.tab{padding-top:0!important;padding-bottom:0!important;line-height:1!important}}  .match-tile{cursor:pointer;border:1px solid #294563;border-radius:12px;padding:14px;margin:9px 0;background:#12243b;transition:border-color .15s,background .15s}.match-tile:hover,.match-tile:focus-visible{border-color:#a8ff3e;background:#192f47;outline:none}.match-tile .result{margin:5px 0}.match-dialog{border:1px solid #42617a;border-radius:18px;background:#102139;color:#edf5ff;width:min(540px,calc(100vw - 28px));max-height:85vh;overflow:auto;padding:22px;box-shadow:0 18px 80px #0009}.match-dialog::backdrop{background:#000b}.match-dialog header{display:flex;justify-content:space-between}.match-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:15px 0}.match-detail-grid>div{background:#1c344e;padding:12px;border-radius:10px}.match-detail-grid small{display:block;color:#a3b8d0}.match-detail-grid b{font-size:18px} </style></head><body><div class="wrap"><header><div><small>TENNIS TRAINING ANALYSIS · v1.4.1</small><h1>🎾 Моят тенис дневник</h1></div><button type="button" id="languageToggle" class="secondary" style="padding:8px 12px;font-size:19px" aria-label="Change language">🇧🇬</button></header>
+input[type=date]{color-scheme:dark;min-width:0}.date-control{display:flex;gap:8px;align-items:stretch}.date-control input{flex:1;min-width:0}.date-open{flex:none;min-width:52px;font-size:22px;padding:8px 12px;touch-action:manipulation}.date-control{position:relative}.date-control input[type=date]{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}.date-display{flex:1;min-width:0;text-align:left;background:#071625;border:1px solid #4a6077;color:white;font:inherit;font-weight:400}.date-popup{position:absolute;top:100%;left:0;z-index:1000;width:min(310px,90vw);background:#15263b;border:1px solid #60758c;border-radius:12px;padding:12px;box-shadow:0 12px 30px #0009}.date-head{display:flex;align-items:center;justify-content:space-between;gap:6px}.date-head button{padding:7px 12px}.date-days{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-top:9px}.date-days button{padding:8px 0;border-radius:6px;background:#20344c;color:white;font-size:13px}.date-days button.selected{background:#a8ff3e;color:#07111f}.date-days span{text-align:center;font-size:12px;color:#9db0c7;padding:5px 0}.account-menu{margin-left:auto;display:flex;align-items:center}.account-info{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;color:#a8ff3e}.account-info button{padding:9px 12px}@media(max-width:650px){.account-menu{margin-left:0;width:100%}}@media(max-width:650px){.wrap{padding:10px}header{gap:5px}header h1{font-size:clamp(23px,6vw,30px);margin:5px 0}header small{font-size:11px}header a{font-size:13px}.tabs{gap:5px;margin:12px 0}.tabs .tab{padding:9px 10px;font-size:12px;border-radius:8px}.account-menu{width:auto;margin-left:0}.account-info{font-size:12px;gap:7px}.account-info button,.account-menu>button{padding:8px 10px;font-size:12px}.grid{gap:8px}.grid .card{padding:12px;margin:6px 0;border-radius:12px}.grid .num{font-size:25px}.card{padding:13px;margin:10px 0;border-radius:12px}.card h2{font-size:22px;margin:8px 0 14px}.item{padding:9px 0;font-size:13px;gap:8px}.item button{padding:8px 10px;font-size:12px}button,.btn{padding:10px 12px;font-size:13px}input,select,textarea{padding:9px;font-size:16px}.date-days button{font-size:13px;padding:8px 0}} .result.win-result,.win-number{color:#a8ff3e!important}.result.loss-result,.loss-number{color:#ff666b!important}.result.draw-result{color:#e9c66b!important}@media(max-width:650px){.wrap{padding:8px}header h1{font-size:22px;line-height:1.2}.tabs{gap:4px;margin:9px 0}.tabs .tab{padding:7px 8px;font-size:11px}.account-info{font-size:11px}.account-info button,.account-menu>button{padding:7px 9px;font-size:11px}.grid{gap:7px}.grid .card{padding:9px 11px;margin:4px 0;border-radius:10px}.grid .num{font-size:23px}.grid small{font-size:11px}.card{padding:11px;margin:8px 0;border-radius:11px}.card h2{font-size:19px;margin:7px 0 10px}.item{padding:8px 0;font-size:12px;gap:6px}.item button{padding:7px 9px;font-size:11px}button,.btn{padding:8px 10px;font-size:12px}.date-open{min-width:40px;padding:6px 8px;font-size:17px}} @media(max-width:650px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:5px!important}.grid .card{min-width:0;padding:9px 5px!important;margin:4px 0!important}.grid .card small{font-size:10px!important;overflow-wrap:anywhere}.grid .num{font-size:22px!important}} @media(max-width:650px){.tabs{display:flex;flex-wrap:nowrap;align-items:center;gap:3px;width:100%;margin:9px 0}.tabs .tab{flex:1 1 auto;min-width:0;padding:8px 4px;font-size:clamp(10px,2.8vw,12px);white-space:nowrap}.tabs #languageToggle{order:0!important;margin-left:0!important;flex:0 0 34px;padding:8px 3px!important;font-size:17px!important}.tabs [data-page="settings"]{flex:0 0 34px;font-size:17px!important;padding:7px 3px}.tabs .account-menu{flex:0 0 auto;min-width:0}.tabs .account-info{gap:3px}.tabs #accountName{display:none}.tabs #login,.tabs #logout{padding:8px 5px;font-size:10px}} .home-bottom-actions{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:12px 0}.home-bottom-actions .btn{text-decoration:none;display:inline-flex;align-items:center;justify-content:center;text-align:center}.home-bottom-actions button{min-width:0}@media(max-width:650px){header{flex-wrap:nowrap}header>div{min-width:0}header #languageToggle{flex:none;font-size:20px!important;padding:7px 11px!important}.home-bottom-actions{gap:8px}.home-bottom-actions .btn,.home-bottom-actions button{font-size:12px;padding:10px 9px}} .tabs{align-items:stretch}.tabs>.tab,.tabs>.account-menu,.tabs>.account-menu>button,.tabs .account-info,.tabs .account-info>button{min-height:38px;box-sizing:border-box}.tabs>.tab{display:inline-flex;align-items:center;justify-content:center;line-height:1.15}.tabs>.account-menu{align-items:stretch}.tabs .account-info{align-items:stretch}.tabs .account-info>button,.tabs>.account-menu>button{height:100%;display:inline-flex;align-items:center;justify-content:center}@media(max-width:650px){.tabs>.tab,.tabs>.account-menu,.tabs>.account-menu>button,.tabs .account-info,.tabs .account-info>button{height:36px;min-height:36px}.tabs>.tab{padding-top:4px;padding-bottom:4px}} .tabs .tab.active{outline:none!important;box-shadow:inset 0 0 0 2px #a8ff3e}.tabs>.tab{height:38px!important;min-height:38px!important;max-height:38px!important;box-sizing:border-box!important;vertical-align:middle!important}@media(max-width:650px){.tabs{align-items:center!important}.tabs>.tab,.tabs>.account-menu,.tabs>.account-menu>button,.tabs .account-info,.tabs .account-info>button{height:36px!important;min-height:36px!important;max-height:36px!important;box-sizing:border-box!important}.tabs>.tab{padding-top:0!important;padding-bottom:0!important;line-height:1!important}}  .match-tile{cursor:pointer;border:1px solid #294563;border-radius:12px;padding:14px;margin:9px 0;background:#12243b;transition:border-color .15s,background .15s}.match-tile:hover,.match-tile:focus-visible{border-color:#a8ff3e;background:#192f47;outline:none}.match-tile .result{margin:5px 0}.match-dialog{border:1px solid #42617a;border-radius:18px;background:#102139;color:#edf5ff;width:min(540px,calc(100vw - 28px));max-height:85vh;overflow:auto;padding:22px;box-shadow:0 18px 80px #0009}.match-dialog::backdrop{background:#000b}.match-dialog header{display:flex;justify-content:space-between}.match-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:15px 0}.match-detail-grid>div{background:#1c344e;padding:12px;border-radius:10px}.match-detail-grid small{display:block;color:#a3b8d0}.match-detail-grid b{font-size:18px} </style></head><body><div class="wrap"><header><div><small>TENNIS TRAINING ANALYSIS · v1.4.2</small><h1>🎾 Моят тенис дневник</h1></div><button type="button" id="languageToggle" class="secondary" style="padding:8px 12px;font-size:19px" aria-label="Change language">🇧🇬</button></header>
 <nav class="tabs"><button class="tab active" data-page="home">Начало</button><button class="tab secondary" data-page="history">История</button><button class="tab secondary" data-page="training">Тренировки</button><button class="tab secondary" data-page="stats">Статистика</button><button class="tab secondary" data-page="players">Играчи</button><button class="tab secondary" data-page="settings">⚙️</button><span id="cloudStatus" role="status" aria-live="polite" style="display:inline-flex;align-items:center;max-width:100%;font-size:12px;font-weight:700;color:#a8ff3e;padding:8px 10px;border:1px solid #315348;border-radius:9px;background:#102a2b;white-space:normal"></span><span class="account-menu"><button id="login" class="secondary" style="display:none">Влез</button><span id="accountInfo" style="display:none" class="account-info"><span id="accountName"></span><button id="logout" class="secondary">Изход</button></span></span></nav>
+<div id="syncRecovery" class="card" hidden><p id="syncRecoveryStatus" role="status"></p><div class="actions"><button type="button" id="retrySync">Повтори синхронизацията</button><button type="button" class="secondary" id="exportPending">Изтегли локално копие</button><button type="button" class="secondary" id="acceptCloud" hidden>Зареди облачното копие</button></div></div>
 <section id="home"><div class="grid" id="overview"></div><div class="home-bottom-actions"><button onclick="show('add')">+ Добави мач</button><a class="btn secondary" href="garmin.html">Garmin анализ →</a></div><div class="card"><h2>Последни срещи</h2><div id="recent"></div></div></section>
 <section id="add" hidden><div class="card"><h2 id="formTitle">Добави мач</h2><form id="matchForm"><label>Противник</label><select id="opponent" required></select><button type="button" class="secondary" onclick="newPlayer()">+ Нов играч</button><label>Дата</label><div class="date-control"><input type="date" id="matchDate" required><button type="button" class="date-display" id="matchDateDisplay" onclick="openDatePicker('matchDate')">дд/мм/гггг</button><button type="button" class="secondary date-open" onclick="openDatePicker('matchDate')" aria-label="Отвори календар" title="Избери дата">📅</button></div><label>Настилка</label><select id="surface"><option value="Клей">Клей</option><option value="Твърда">Твърда</option><option value="Трева">Трева</option><option value="Изкуствена трева">Изкуствена трева</option><option value="Друга">Друга</option></select><label>Сетове — първо моите геймове</label><div id="setRows"></div><button type="button" class="secondary" onclick="addSet()">+ Добави сет</button><label><input type="checkbox" id="matchTiebreak" onchange="toggleMatchTiebreak()"> Решаващ тайбрек / Match tiebreak</label><div id="matchTiebreakFields" hidden class="sets"><span>TB</span><input id="tbMine" type="number" min="0" max="99" placeholder="Аз"><input id="tbTheirs" type="number" min="0" max="99" placeholder="Той"><span>🎾</span></div><p class="muted">Решаващият тайбрек е вместо последен сет. Първи до 10 точки, с поне 2 точки разлика.</p><label><input type="checkbox" id="timed"> Мачът е прекратен поради изтичане на времето</label><p class="muted">При прекратен мач победителят се определя първо по спечелени сетове, после по общ брой геймове. При равенство и в двете — равен резултат.</p><label>Бележки (по желание)</label><textarea id="notes" rows="3"></textarea><div class="actions"><button type="submit">Запази мача</button><button type="button" class="secondary" onclick="resetForm()">Изчисти</button></div><p id="formError" class="danger"></p></form></div></section>
 <section id="history" hidden><div class="card"><h2>История на срещите</h2><div id="historyList"></div></div></section>
 <section id="stats" hidden><div class="card"><h2>Статистика и филтри</h2><div class="filters"><div><label>От дата</label><div class="date-control"><input type="date" id="from"><button type="button" class="date-display" id="fromDisplay" onclick="openDatePicker('from')">дд/мм/гггг</button><button type="button" class="secondary date-open" onclick="openDatePicker('from')" aria-label="Отвори календар" title="Избери дата">📅</button></div></div><div><label>До дата</label><div class="date-control"><input type="date" id="to"><button type="button" class="date-display" id="toDisplay" onclick="openDatePicker('to')">дд/мм/гггг</button><button type="button" class="secondary date-open" onclick="openDatePicker('to')" aria-label="Отвори календар" title="Избери дата">📅</button></div></div><div><label>Противник</label><select id="filterPlayer"></select></div><div><label>Настилка</label><select id="filterSurface"><option value="">Всички</option><option>Клей</option><option>Твърда</option><option>Трева</option><option>Изкуствена трева</option><option>Друга</option></select></div></div><div class="grid" id="statCards"></div><h3>Календар</h3><div class="actions"><button class="secondary" onclick="changeMonth(-1)">←</button><strong id="monthLabel"></strong><button class="secondary" onclick="changeMonth(1)">→</button></div><div class="calendar" id="calendar"></div><h3>Резултати по противник</h3><div id="byPlayer"></div><h3>Резултати по настилка</h3><div id="bySurface"></div></div></section>
-<section id="training" hidden><div class="card"><h2>⌚ Garmin тренировки</h2><p class="muted">Всички тенис активности, включително свързаните с мачове. Часовете са от експортирания архив; часовата зона предстои да бъде потвърдена.</p><div class="actions" style="align-items:center"><label>Година <select id="trainingYear"><option value="">Всички</option></select></label><label>Месец <select id="trainingMonth"><option value="">Всички</option></select></label></div><div id="trainingOverview" class="grid"></div><div id="trainingChart" class="card" style="margin:12px 0"></div><div id="trainingList"></div></div></section><dialog id="matchDetails" class="match-dialog" aria-label="Подробности за мача"><header><h2 id="matchDetailsTitle">Мач</h2><button type="button" class="secondary" onclick="closeMatchDetails()">✕</button></header><div id="matchDetailsBody"></div><div id="matchDetailsActions" class="actions" hidden></div></dialog><section id="settings" hidden><div class="card"><h2>☁️ FIT облачен архив · v1.4.1</h2><p class="muted">Качи оригиналните FIT файлове еднократно в личното си Firebase Storage пространство. Запазват се оригиналите за бъдещи анализи. Не се публикуват в GitHub.</p><label class="btn secondary">Избери FIT файлове<input type="file" id="fitCloudFiles" accept=".fit" multiple style="display:none"></label><label class="btn secondary">Избери папка с FIT<input type="file" id="fitCloudFolder" webkitdirectory multiple style="display:none"></label><div class="actions"><button type="button" id="fitCloudStart">Качи избраните файлове</button><button type="button" class="secondary" id="fitCloudRefresh">Провери архива</button></div><p id="fitCloudStatus" class="muted">Избери файловете от Garmin_All_FIT. Съществуващите се пропускат.</p><progress id="fitCloudProgress" max="100" value="0" style="width:100%"></progress><div id="fitCloudCount" class="muted"></div><p class="muted">Ако получиш storage/unauthorized или storage/unknown, провери Firebase Storage и правилата му. Облачният архив е първият етап; автоматичното разчитане на всички FIT полета ще добавим отделно.</p></div><div class="card"><h2>Графики на пулса от FIT</h2><p class="muted">Импортирай tennis_hr_series.json. Данните се съхраняват само в този браузър и не се публикуват в GitHub.</p><label class="btn secondary">Импорт на пулсови графики<input id="hrImportFile" type="file" accept=".json,application/json" style="display:none"></label><p id="hrImportStatus" class="muted"></p></div><div class="card"><h2>Управление на мачовете</h2><label style="display:flex;align-items:center;gap:10px"><input type="checkbox" id="enableMatchEditing"> Разреши редактиране и изтриване на мачове</label><p class="muted">При изключена опция мачовете се отварят само за преглед. Промените не засягат Garmin данните.</p></div><div class="card"><h2>🎾 Garmin интеграция</h2><p class="muted">Импортирай обединения JSON архив. Мачовете се свързват по ID, без да се заменят резултатите. Повторният импорт не създава дубликати.</p><div class="actions"><label class="btn secondary" style="margin:0">Импорт Garmin + мачове <input type="file" id="garminMergeFile" accept=".json,application/json" style="display:none"></label></div><p id="garminImportStatus" class="muted"></p><p class="muted">Списъкът и статистиката са в раздел „Тренировки“.</p><div id="garminActivitySummary" hidden></div></div><div class="card"><h2>⚙️ Настройки</h2><h3>Резервно копие</h3><p class="muted">Мачовете се запазват автоматично в облака при вход с Google. Можеш също да изтеглиш JSON архив за лично съхранение или да възстановиш данните от такъв архив.</p><div class="actions"><button onclick="exportData()">Изтегли архив JSON</button><label class="btn secondary" style="margin:0">Възстанови архив <input type="file" id="importFile" accept=".json,application/json" style="display:none"></label></div><p class="muted">Внимание: възстановяването заменя текущите данни и може да ги синхронизира в облака.</p></div></section><section id="players" hidden><div class="card"><h2>Моите противници</h2><div class="actions"><button onclick="newPlayer()">+ Добави играч</button></div><div id="playerList"></div></div></section>
+<section id="training" hidden><div class="card"><h2>⌚ Garmin тренировки</h2><p class="muted">Всички тенис активности, включително свързаните с мачове. Часовете са от експортирания архив; часовата зона предстои да бъде потвърдена.</p><div class="actions" style="align-items:center"><label>Година <select id="trainingYear"><option value="">Всички</option></select></label><label>Месец <select id="trainingMonth"><option value="">Всички</option></select></label></div><div id="trainingOverview" class="grid"></div><div id="trainingChart" class="card" style="margin:12px 0"></div><div id="trainingList"></div></div></section><dialog id="matchDetails" class="match-dialog" aria-label="Подробности за мача"><header><h2 id="matchDetailsTitle">Мач</h2><button type="button" class="secondary" onclick="closeMatchDetails()">✕</button></header><div id="matchDetailsBody"></div><div id="matchDetailsActions" class="actions" hidden></div></dialog><section id="settings" hidden><div class="card"><h2>☁️ FIT облачен архив</h2><p class="muted">Облачното качване на FIT файлове е недостъпно на текущия Firebase Spark план. Можеш да отвориш FIT файл локално в Garmin анализатора.</p><a class="btn secondary" href="garmin.html">Garmin анализ →</a></div><div class="card"><h2>Графики на пулса от FIT</h2><p class="muted">Импортирай tennis_hr_series.json. Данните се съхраняват само в този браузър и не се публикуват в GitHub.</p><label class="btn secondary">Импорт на пулсови графики<input id="hrImportFile" type="file" accept=".json,application/json" style="display:none"></label><p id="hrImportStatus" class="muted" role="status"></p><button type="button" class="secondary" id="recoverHr" hidden>Възстанови локални HR графики за свързаните мачове</button></div><div class="card"><h2>Управление на мачовете</h2><label style="display:flex;align-items:center;gap:10px"><input type="checkbox" id="enableMatchEditing"> Разреши редактиране и изтриване на мачове</label><p class="muted">При изключена опция мачовете се отварят само за преглед. Промените не засягат Garmin данните.</p></div><div class="card"><h2>🎾 Garmin интеграция</h2><p class="muted">Импортирай обединения JSON архив. Мачовете се свързват по ID, без да се заменят резултатите. Повторният импорт не създава дубликати.</p><div class="actions"><label class="btn secondary" style="margin:0">Импорт Garmin + мачове <input type="file" id="garminMergeFile" accept=".json,application/json" style="display:none"></label></div><p id="garminImportStatus" class="muted"></p><p class="muted">Списъкът и статистиката са в раздел „Тренировки“.</p><div id="garminActivitySummary" hidden></div></div><div class="card"><h2>⚙️ Настройки</h2><h3>Резервно копие</h3><p class="muted">Мачовете се запазват автоматично в облака при вход с Google. Можеш също да изтеглиш JSON архив за лично съхранение или да възстановиш данните от такъв архив.</p><div class="actions"><button onclick="exportData()">Изтегли архив JSON</button><label class="btn secondary" style="margin:0">Възстанови архив <input type="file" id="importFile" accept=".json,application/json" style="display:none"></label></div><p class="muted">Внимание: възстановяването заменя текущите данни и може да ги синхронизира в облака.</p></div></section><section id="players" hidden><div class="card"><h2>Моите противници</h2><div class="actions"><button onclick="newPlayer()">+ Добави играч</button></div><div id="playerList"></div></div></section>
 </div>
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 import {getAuth,GoogleAuthProvider,signInWithPopup,signOut,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
-import {getFirestore,doc,onSnapshot,setDoc} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-import {getStorage,ref as storageRef,uploadBytes,getMetadata,listAll} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-storage.js";
-const app=initializeApp({apiKey:"AIzaSyA4saHkVqnvX2cOzbGClX0jSOEXq7KS8qY",authDomain:"tennis-training-analysis.firebaseapp.com",projectId:"tennis-training-analysis",storageBucket:"tennis-training-analysis.firebasestorage.app",messagingSenderId:"618952540741",appId:"1:618952540741:web:03fd5888ba355326b7592c"});
-const auth=getAuth(app),db=getFirestore(app),storage=getStorage(app);let user=null,ready=false,unsub=null,loading=false,timer=null;const status=t=>{const node=el("cloudStatus");node.textContent=t;const error=/Грешка|Firestore:|Error|невалиден/i.test(t);node.style.color=error?"#ff8590":/Проверка|готов за|Checking|ready/i.test(t)?"#eacb81":"#a8ff3e";};
+import {getFirestore,doc,onSnapshot,runTransaction} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+const app=initializeApp({apiKey:"AIzaSyA4saHkVqnvX2cOzbGClX0jSOEXq7KS8qY",authDomain:"tennis-training-analysis.firebaseapp.com",projectId:"tennis-training-analysis",messagingSenderId:"618952540741",appId:"1:618952540741:web:03fd5888ba355326b7592c"});
+const auth=getAuth(app),db=getFirestore(app);
+let user=null,ready=false,unsub=null,timer=null,session=0;const status=t=>{const node=el("cloudStatus");node.textContent=t;const error=/Грешка|Firestore:|Error|невалиден/i.test(t);node.style.color=error?"#ff8590":/Проверка|готов за|Checking|ready/i.test(t)?"#eacb81":"#a8ff3e";};
 const KEY='tta_matches_v1',PK='tta_players_v1',el=id=>document.getElementById(id);const scopedKey=(k)=>user?k+'_'+user.uid:null;
 let matches=[],players=[],garminActivities=[],editing=null,month=new Date();function read(k){try{const x=JSON.parse(localStorage.getItem(k)||'[]');return Array.isArray(x)?x:[]}catch{return []}}
-function save(){if(!user){alert('Влез с Google, за да запазваш мачове.');return}localStorage.setItem(scopedKey(KEY),JSON.stringify(matches));localStorage.setItem(scopedKey(PK),JSON.stringify(players));localStorage.setItem(scopedKey('tta_garmin_v1'),JSON.stringify(garminActivities));renderAll();if(ready&&!loading){status("⟳ Синхронизиране…");clearTimeout(timer);timer=setTimeout(sync,500)}}
-async function sync(){if(!user||!ready)return;try{await setDoc(doc(db,"users",user.uid,"tennis","diary"),{players,matches:matches.map(m=>({...m,sets:m.sets.map(pair=>({mine:pair[0],theirs:pair[1]}))})),garminActivities,updatedAt:new Date().toISOString()});status("✓ Синхронизирано")}catch(e){status("Грешка: "+e.message)}}
+const GARMIN_KEY='tta_garmin_v1', HR_KEY='tennis_hr_series_v1', DRAFT_KEY='tennis_diary_pending_v1';
+let serverCopy, base, pending, busy=false, conflict=false;
+function readObject(key){
+ try{const value=JSON.parse(localStorage.getItem(key)||'null');return value&&typeof value==='object'&&!Array.isArray(value)?value:null}
+ catch{return null}
+}
+function signature(value){
+ return JSON.stringify(value,(_,item)=>item&&typeof item==='object'&&!Array.isArray(item)
+  ?Object.fromEntries(Object.keys(item).sort().map(key=>[key,item[key]])):item);
+}
+function diaryData(updatedAt){
+ return structuredClone({players,matches:matches.map(m=>({...m,sets:m.sets.map(([mine,theirs])=>({mine,theirs}))})),garminActivities,updatedAt});
+}
+function cloudData(snapshot){
+ if(!snapshot.exists())return null;
+ const {players,matches,garminActivities,updatedAt}=snapshot.data();
+ if(!Array.isArray(players)||!Array.isArray(matches))throw Error('Невалиден облачен архив');
+ return {players,matches,garminActivities,updatedAt};
+}
+function decodeMatch(match){
+ return match&&{...match,sets:(match.sets||[]).map(pair=>Array.isArray(pair)?pair:[pair.mine,pair.theirs])};
+}
+function loadDiary(data){
+ players=structuredClone(data?.players||[]);
+ matches=structuredClone((data?.matches||[]).map(decodeMatch));
+ garminActivities=structuredClone(Array.isArray(data?.garminActivities)?data.garminActivities:[]);
+}
+function cacheDiary(){
+ try{
+  localStorage.setItem(scopedKey(KEY),JSON.stringify(matches));
+  localStorage.setItem(scopedKey(PK),JSON.stringify(players));
+  localStorage.setItem(scopedKey(GARMIN_KEY),JSON.stringify(garminActivities));
+ }catch{ /* The pending write, if any, is stored separately before syncing. */ }
+}
+function showRecovery(message='',canLoadCloud=false){
+ el('syncRecovery').hidden=!message;
+ el('syncRecoveryStatus').textContent=message;
+ el('acceptCloud').hidden=!canLoadCloud;
+}
+function canEdit(){
+ if(!user||!ready){alert('Влез с Google и изчакай проверката на облака.');return false}
+ if(readObject(scopedKey(DRAFT_KEY))?.id!==pending?.id){
+  status('Дневникът е променен в друг раздел. Презареди страницата.');
+  return false;
+ }
+ return true;
+}
+function save(){
+ const draft={id:crypto.randomUUID(),base:pending?.base??base,attempt:pending?.attempt,data:diaryData(new Date().toISOString())};
+ try{localStorage.setItem(scopedKey(DRAFT_KEY),JSON.stringify(draft))}
+ catch{
+  loadDiary(pending?.data??serverCopy);renderAll();
+  status('Грешка: няма място за локално запазване.');
+  return false;
+ }
+ pending=draft;renderAll();
+ if(!conflict){status('⟳ Синхронизиране…');clearTimeout(timer);timer=setTimeout(sync,500)}
+ return true;
+}
+function applyCloud(data){
+ if(el('matchDetails').open&&signature(matches.find(m=>m.id===detailMatchId))!==signature(decodeMatch(data?.matches.find(m=>m.id===detailMatchId))))resetDetails();
+ if(editing&&signature(matches.find(m=>m.id===editing))!==signature(decodeMatch(data?.matches.find(m=>m.id===editing)))){
+  resetForm();
+  el('formError').textContent='Мачът е променен в облака. Отвори го отново за редакция.';
+ }
+ base=signature(data);loadDiary(data);cacheDiary();renderAll();
+}
+async function sync(){
+ if(!user||!ready||!pending||busy)return;
+ const token=session,key=scopedKey(DRAFT_KEY),ref=doc(db,'users',user.uid,'tennis','diary');
+ const draft=pending, desired=signature(draft.data);
+ if(readObject(key)?.id!==draft.id){
+  status('Дневникът е променен в друг раздел. Презареди страницата.');
+  return;
+ }
+ busy=true;
+ try{
+  await runTransaction(db,async transaction=>{
+   if(token!==session)throw Error('Account changed');
+   const current=cloudData(await transaction.get(ref));
+   const remote=signature(current);
+   if(token!==session)throw Error('Account changed');
+   if(remote===desired)return;
+   if(remote!==draft.base&&remote!==draft.attempt){serverCopy=current;throw Error('diary-conflict')}
+   const attempt=desired;
+   if(readObject(key)?.id!==pending.id)throw Error('Diary changed in another tab');
+   localStorage.setItem(key,JSON.stringify({...pending,base:remote,attempt}));
+   pending={...pending,base:remote,attempt};
+   transaction.set(ref,draft.data,{merge:true});
+  });
+  if(token!==session)return;
+  if(readObject(key)?.id!==pending.id)throw Error('Diary changed in another tab');
+  base=desired;
+  if(pending.id===draft.id){
+   localStorage.removeItem(key);
+   pending=null;
+   // A server snapshot received during the write can already be newer.
+   if(signature(serverCopy)!==draft.base&&signature(serverCopy)!==draft.attempt)applyCloud(serverCopy);
+   else{serverCopy=draft.data;cacheDiary()}
+   status('✓ Синхронизирано');showRecovery();
+  }else{
+   const next={...pending,base:desired,attempt:undefined};
+   localStorage.setItem(key,JSON.stringify(next));
+   pending=next;
+   clearTimeout(timer);timer=setTimeout(sync,0);
+  }
+  conflict=false;
+ }catch(error){
+  if(token!==session)return;
+  conflict=error.message==='diary-conflict';
+  status(conflict?'Конфликт при синхронизация.':'Грешка при синхронизация.');
+  showRecovery(conflict
+   ?'Облачното копие е променено. Локалните промени са запазени в този браузър. Изтегли ги, преди да заредиш облачното копие.'
+   :'Промените са запазени в този браузър. Повтори синхронизацията при връзка.',conflict);
+ }finally{if(token===session)busy=false}
+}
+el('retrySync').onclick=sync;
+el('exportPending').onclick=()=>{if(user&&pending)exportData()};
+el('acceptCloud').onclick=()=>{
+ if(!conflict||!pending||busy||!canEdit()||!confirm('Да заредя ли облачното копие? Локалните промени ще останат в резервно копие в този браузър.'))return;
+ const key=scopedKey(DRAFT_KEY);
+ try{
+  localStorage.setItem(key+'_backup_'+pending.id,JSON.stringify(pending.data));
+  exportData();
+  localStorage.removeItem(key);
+ }catch{status('Грешка: резервното копие не е завършено.');return}
+ pending=null;conflict=false;
+ resetDetails();resetForm();applyCloud(serverCopy);status('Заредено е облачното копие.');showRecovery();
+};
+window.addEventListener('online',()=>{if(!conflict)sync()});
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function show(id){document.querySelectorAll('main section, .wrap>section').forEach(s=>s.hidden=s.id!==id);document.querySelectorAll('.tab').forEach(b=>{b.classList.toggle('active',b.dataset.page===id);b.classList.toggle('secondary',b.dataset.page!==id)});if(id==='stats')renderStats();if(id==='training')renderTraining();window.scrollTo(0,0)}
-function newPlayer(){const name=prompt('Име на новия противник:')?.trim();if(!name)return;let existing=players.find(p=>p.name.toLowerCase()===name.toLowerCase());if(existing){alert('Този играч вече съществува.');return}let p={id:crypto.randomUUID(),name};players.push(p);save();el('opponent').value=p.id;show('add')}
-function deletePlayer(id){const p=players.find(x=>x.id===id);if(!p)return;const count=matches.filter(m=>m.playerId===id).length;if(count){alert('Не можеш да изтриеш играч с въведени мачове. Първо изтрий или редактирай неговите мачове.');return}if(!confirm('Да изтрия ли играча '+p.name+'?'))return;players=players.filter(x=>x.id!==id);save()}
+function newPlayer(){if(!canEdit())return;const name=prompt('Име на новия противник:')?.trim();if(!name)return;let existing=players.find(p=>p.name.toLowerCase()===name.toLowerCase());if(existing){alert('Този играч вече съществува.');return}let p={id:crypto.randomUUID(),name};players.push(p);if(!save())return;el('opponent').value=p.id;show('add')}
+function deletePlayer(id){if(!canEdit())return;const p=players.find(x=>x.id===id);if(!p)return;const count=matches.filter(m=>m.playerId===id).length;if(count){alert('Не можеш да изтриеш играч с въведени мачове. Първо изтрий или редактирай неговите мачове.');return}if(!confirm('Да изтрия ли играча '+p.name+'?'))return;players=players.filter(x=>x.id!==id);save()}
 function playerName(id){return players.find(p=>p.id===id)?.name||'Неизвестен'}
 function addSet(a='',b=''){const row=document.createElement('div');row.className='sets';row.innerHTML='<span>Сет '+(el('setRows').children.length+1)+'</span><input type="number" min="0" max="99" placeholder="Аз" required value="'+esc(a)+'"><input type="number" min="0" max="99" placeholder="Той" required value="'+esc(b)+'"><button type="button" class="secondary" aria-label="Премахни сет">×</button>';row.querySelector('button').onclick=()=>{row.remove();[...el('setRows').children].forEach((r,i)=>r.firstChild.textContent='Сет '+(i+1))};el('setRows').append(row)}
 function toggleMatchTiebreak(){el('matchTiebreakFields').hidden=!el('matchTiebreak').checked;el('tbMine').required=el('tbTheirs').required=el('matchTiebreak').checked}
 function resetForm(){editing=null;el('matchForm').reset();el('matchDate').value=new Date().toLocaleDateString('en-CA');el('setRows').innerHTML='';addSet();addSet();toggleMatchTiebreak();el('formTitle').textContent='Добави мач';el('formError').textContent=''}
 function outcome(m){let a=0,b=0,ga=0,gb=0;for(const s of m.sets){ga+=s[0];gb+=s[1];if(s[0]>s[1]&&complete(s))a++;else if(s[1]>s[0]&&complete(s))b++}if(m.matchTiebreak&&m.matchTiebreak.length===2){if(m.matchTiebreak[0]>m.matchTiebreak[1])a++;else if(m.matchTiebreak[1]>m.matchTiebreak[0])b++}let result=a>b?'win':b>a?'loss':m.timed?(ga>gb?'win':gb>ga?'loss':'draw'):'draw';return {result,a,b,ga,gb}}
 function complete(s){let a=s[0],b=s[1],hi=Math.max(a,b),lo=Math.min(a,b);return (hi===6&&lo<=4)||(hi===7&&(lo===5||lo===6))}
-el('matchForm').onsubmit=e=>{e.preventDefault();const sets=[...el('setRows').children].map(r=>[...r.querySelectorAll('input')].map(x=>Number(x.value)));const timed=el('timed').checked;const hasTB=el('matchTiebreak').checked;const tb=hasTB?[Number(el('tbMine').value),Number(el('tbTheirs').value)]:null;let error='';if(hasTB&&(!el('tbMine').value||!el('tbTheirs').value||tb.some(n=>!Number.isInteger(n)||n<0||n>99)||Math.max(...tb)<10||Math.abs(tb[0]-tb[1])<2))error='Решаващият тайбрек трябва да е до поне 10 точки и с 2 точки разлика.';else if(!el('opponent').value)error='Добави или избери противник.';else if(!sets.length||sets.some(s=>s.some(v=>!Number.isInteger(v)||v<0||v>99)))error='Въведи валидни геймове.';else if(!timed&&sets.some(s=>!complete(s)))error='При незавършен сет отбележи прекратяване по време.';else if(!timed&&!hasTB&&sets.filter(s=>s[0]>s[1]).length===sets.filter(s=>s[1]>s[0]).length)error='При равен брой сетове отбележи прекратяване по време.';if(error){el('formError').textContent=error;return}const item={...(editing?matches.find(m=>m.id===editing)||{}:{}),id:editing||crypto.randomUUID(),playerId:el('opponent').value,date:el('matchDate').value,surface:el('surface').value,sets,matchTiebreak:tb,timed,notes:el('notes').value};matches=editing?matches.map(m=>m.id===editing?item:m):[...matches,item];save();resetForm();show('history')};
-function editMatch(id){let m=matches.find(x=>x.id===id);if(!m)return;resetForm();editing=id;el('formTitle').textContent='Редакция на мач';el('opponent').value=m.playerId;el('matchDate').value=m.date;el('surface').value=m.surface;el('timed').checked=m.timed;el('matchTiebreak').checked=!!m.matchTiebreak;el('tbMine').value=m.matchTiebreak?.[0]??'';el('tbTheirs').value=m.matchTiebreak?.[1]??'';toggleMatchTiebreak();el('notes').value=m.notes||'';el('setRows').innerHTML='';m.sets.forEach(s=>addSet(...s));show('add')}
-function deleteMatch(id){if(confirm('Сигурен ли си, че искаш да изтриеш мача?')){matches=matches.filter(m=>m.id!==id);save()}}
+el('matchForm').onsubmit=e=>{e.preventDefault();if(!canEdit())return;const sets=[...el('setRows').children].map(r=>[...r.querySelectorAll('input')].map(x=>Number(x.value)));const timed=el('timed').checked;const hasTB=el('matchTiebreak').checked;const tb=hasTB?[Number(el('tbMine').value),Number(el('tbTheirs').value)]:null;let error='';if(hasTB&&(!el('tbMine').value||!el('tbTheirs').value||tb.some(n=>!Number.isInteger(n)||n<0||n>99)||Math.max(...tb)<10||Math.abs(tb[0]-tb[1])<2))error='Решаващият тайбрек трябва да е до поне 10 точки и с 2 точки разлика.';else if(!el('opponent').value)error='Добави или избери противник.';else if(!sets.length||sets.some(s=>s.some(v=>!Number.isInteger(v)||v<0||v>99)))error='Въведи валидни геймове.';else if(!timed&&sets.some(s=>!complete(s)))error='При незавършен сет отбележи прекратяване по време.';else if(!timed&&!hasTB&&sets.filter(s=>s[0]>s[1]).length===sets.filter(s=>s[1]>s[0]).length)error='При равен брой сетове отбележи прекратяване по време.';if(error){el('formError').textContent=error;return}const item={...(editing?matches.find(m=>m.id===editing)||{}:{}),id:editing||crypto.randomUUID(),playerId:el('opponent').value,date:el('matchDate').value,surface:el('surface').value,sets,matchTiebreak:tb,timed,notes:el('notes').value};matches=editing?matches.map(m=>m.id===editing?item:m):[...matches,item];if(!save())return;resetForm();show('history')};
+function editMatch(id){if(!canEdit())return;let m=matches.find(x=>x.id===id);if(!m)return;resetForm();editing=id;el('formTitle').textContent='Редакция на мач';el('opponent').value=m.playerId;el('matchDate').value=m.date;el('surface').value=m.surface;el('timed').checked=m.timed;el('matchTiebreak').checked=!!m.matchTiebreak;el('tbMine').value=m.matchTiebreak?.[0]??'';el('tbTheirs').value=m.matchTiebreak?.[1]??'';toggleMatchTiebreak();el('notes').value=m.notes||'';el('setRows').innerHTML='';m.sets.forEach(s=>addSet(...s));show('add')}
+function deleteMatch(id){if(!canEdit())return;if(confirm('Сигурен ли си, че искаш да изтриеш мача?')){matches=matches.filter(m=>m.id!==id);save()}}
 function matchHtml(m){const o=outcome(m),name=o.result==='win'?'Победа':o.result==='loss'?'Загуба':'Равен';return '<div class="match-tile" role="button" tabindex="0" onclick="openMatchDetails(\''+esc(m.id)+'\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();openMatchDetails(\''+esc(m.id)+'\')}"><b>'+esc(formatDateBG(m.date))+' · '+esc(playerName(m.playerId))+'</b><div class="result '+(o.result==='loss'?'loss-result':o.result==='draw'?'draw-result':'win-result')+'">'+m.sets.map(s=>s.join(':')).concat(m.matchTiebreak?['TB '+m.matchTiebreak.join(':')]:[]).join(', ')+' · '+name+'</div>'+(m.garmin?'<small>⌚ Garmin · '+esc(m.garmin.duration_min??'—')+' мин · ♥ '+esc(m.garmin.avg_hr??'—')+' / '+esc(m.garmin.max_hr??'—')+' bpm · '+esc(m.garmin.calories??'—')+' kcal</small>':'<small>Подробности за мача</small>')+'</div>'}
-let fitCloudSelected=[];
-const cloudStatus=t=>el('fitCloudStatus').textContent=t;
-function chooseFitFiles(files){fitCloudSelected=[...files].filter(f=>/\\.fit$/i.test(f.name));cloudStatus('Избрани '+fitCloudSelected.length+' FIT файла. Натисни „Качи избраните файлове“.');el('fitCloudProgress').value=0;}
-el('fitCloudFiles').addEventListener('change',e=>chooseFitFiles(e.target.files));
-el('fitCloudFolder').addEventListener('change',e=>chooseFitFiles(e.target.files));
-async function cloudList(){if(!user)throw Error('Първо влез с Google.');const result=await listAll(storageRef(storage,'users/'+user.uid+'/fit'));const names=new Set(result.items.map(x=>x.name));el('fitCloudCount').textContent='В облака: '+names.size+' FIT файла';return names;}
-el('fitCloudRefresh').onclick=async()=>{try{const names=await cloudList();cloudStatus('✓ Проверени '+names.size+' файла в облачния архив.')}catch(e){cloudStatus('Грешка: '+e.message)}};
-el('fitCloudStart').onclick=async()=>{
- if(!user||!ready){cloudStatus('Влез с Google и изчакай синхронизацията.');return}
- if(!fitCloudSelected.length){cloudStatus('Първо избери FIT файлове или папка.');return}
- const btn=el('fitCloudStart');btn.disabled=true;
- try{
-  const existing=await cloudList();let added=0,skipped=0,errors=0;
-  for(let i=0;i<fitCloudSelected.length;i++){
-   const file=fitCloudSelected[i];const name=file.name;
-   if(existing.has(name)){skipped++;continue}
-   try{await uploadBytes(storageRef(storage,'users/'+user.uid+'/fit/'+name),file,{contentType:'application/octet-stream',customMetadata:{originalName:name}});existing.add(name);added++}
-   catch(err){errors++;cloudStatus('Грешка при '+name+': '+err.message);if(/quota|unauthorized|billing|bucket|retry-limit/i.test(err.code||err.message))break}
-   el('fitCloudProgress').value=Math.round((i+1)/fitCloudSelected.length*100);
-   if(!errors||i%5===0)cloudStatus('Качени '+added+' · налични '+skipped+' · грешки '+errors+' · '+(i+1)+'/'+fitCloudSelected.length);
-  }
-  el('fitCloudCount').textContent='В облака: '+existing.size+' FIT файла';
-  cloudStatus('Приключено: нови '+added+', пропуснати '+skipped+', грешки '+errors+'.');
- }catch(e){cloudStatus('Неуспешен достъп до Storage: '+e.message)}
- finally{btn.disabled=false}
-};
-let hrSeries={};
-try{hrSeries=JSON.parse(localStorage.getItem('tennis_hr_series_v1')||'{}')}catch{}
+let hrSeries={},detailMatchId=null;
+function resetDetails(){
+ detailMatchId=null;
+ if(el('matchDetails').open)closeMatchDetails();
+ el('matchDetailsTitle').textContent='Мач';
+ el('matchDetailsBody').replaceChildren();
+ el('matchDetailsActions').replaceChildren();
+ el('matchDetailsActions').hidden=true;
+}
 function renderMatchHr(id){
  const node=el('matchHrGraph');if(!node)return;
  const samples=hrSeries[String(id)]||[];
@@ -78,6 +188,7 @@ function openMatchDetails(id){
  const g=m.garmin;const cell=(label,value)=>'<div><small>'+esc(label)+'</small><b>'+esc(value??'—')+'</b></div>';
  el('matchDetailsBody').innerHTML='<h3>'+esc(m.sets.map(s=>s.join(':')).concat(m.matchTiebreak?['TB '+m.matchTiebreak.join(':')]:[]).join(', '))+' · '+result+'</h3><div class="match-detail-grid">'+cell('Съперник',playerName(m.playerId))+cell('Дата',formatDateBG(m.date))+cell('Настилка',m.surface)+cell('Формат',m.timed?'Прекратен по време':'Стандартен')+'</div>'+(m.notes?'<p>'+esc(m.notes)+'</p>':'')+(g?'<h3>⌚ Garmin</h3><div class="match-detail-grid">'+cell('Продължителност',(g.duration_min??'—')+' мин')+cell('Среден пулс',(g.avg_hr??'—')+' bpm')+cell('Максимален пулс',(g.max_hr??'—')+' bpm')+cell('Калории',(g.calories??'—')+' kcal')+'</div><div id="matchHrGraph"></div>':'<p class="muted">Няма свързана Garmin активност.</p>');
  const actions=el('matchDetailsActions');actions.hidden=!el('enableMatchEditing').checked;actions.innerHTML='<button type="button" onclick="closeMatchDetails();editMatch(\''+esc(id)+'\')">Редакция</button><button type="button" class="secondary" onclick="closeMatchDetails();deleteMatch(\''+esc(id)+'\')">Изтрий</button>';
+ detailMatchId=id;
  el('matchDetails').showModal();renderMatchHr(g?.id);
 }
 el('matchDetails').addEventListener('click',e=>{if(e.target===el('matchDetails'))closeMatchDetails()});
@@ -91,52 +202,60 @@ function changeMonth(d){month=new Date(month.getFullYear(),month.getMonth()+d,1)
 function renderCalendar(ms){let y=month.getFullYear(),mo=month.getMonth(),days=new Date(y,mo+1,0).getDate(),offset=(new Date(y,mo,1).getDay()+6)%7;el('monthLabel').textContent=month.toLocaleDateString('bg-BG',{month:'long',year:'numeric'});let cells=['П','В','С','Ч','П','С','Н'].map(d=>'<div class="day">'+d+'</div>');for(let i=0;i<offset;i++)cells.push('<div></div>');for(let i=1;i<=days;i++){let date=y+'-'+String(mo+1).padStart(2,'0')+'-'+String(i).padStart(2,'0'),dayMatches=ms.filter(m=>m.date===date),cls=dayMatches.length?(dayMatches.some(m=>outcome(m).result==='loss')?'loss':'played'):'';cells.push('<div class="day '+cls+'" title="'+dayMatches.length+' мача">'+i+(dayMatches.length?' 🎾':'')+'</div>')}el('calendar').innerHTML=cells.join('')}
 function renderAll(){renderGarminSummary();let opts='<option value="">Избери играч</option>'+players.map(p=>'<option value="'+esc(p.id)+'">'+esc(p.name)+'</option>').join('');let current=el('opponent').value;el('opponent').innerHTML=opts;el('opponent').value=current;let fp=el('filterPlayer').value;el('filterPlayer').innerHTML='<option value="">Всички играчи</option>'+players.map(p=>'<option value="'+esc(p.id)+'">'+esc(p.name)+'</option>').join('');el('filterPlayer').value=fp;let sorted=[...matches].sort((a,b)=>b.date.localeCompare(a.date));el('overview').innerHTML=cards(matches);el('recent').innerHTML=sorted.slice(0,2).map(matchHtml).join('')||'<p class="muted">Няма въведени мачове.</p>';el('historyList').innerHTML=sorted.map(matchHtml).join('')||'<p class="muted">Няма въведени мачове.</p>';el('playerList').innerHTML=players.map(p=>'<div class="item"><div>'+esc(p.name)+' <small>'+matches.filter(m=>m.playerId===p.id).length+' мача</small></div><button type="button" class="secondary" onclick="deletePlayer(\''+p.id+'\')">Изтрий</button></div>').join('')||'<p class="muted">Все още няма играчи.</p>';renderStats()}
 
-const NOTEBOOK_IMPORT=[["2026-09-28","6:2, 6:2"],["2026-06-11","4:6"],["2026-05-18","3:6"],["2026-05-11","3:6, 2:3"],["2026-04-29","6:2, 3:3"],["2026-04-23","6:3, 3:1"],["2026-04-09","6:2, 5:3"],["2026-04-05","4:6, 6:0"],["2026-03-26","6:3, 4:2"],["2026-03-19","4:6, 5:0"],["2026-03-12","1:0","Тайбрек 6:1"],["2026-03-05","0:1","Тайбрек 1:6"],["2026-02-26","1:6, 2:6"],["2026-02-17","1:0","Тайбрек 7:5"],["2026-02-12","6:1, 0:6, 1:0","Решаващ тайбрек 2:1"],["2026-02-05","6:0, 6:1, 0:1","Тайбрек 0:8"],["2026-01-30","6:3, 1:5"],["2026-01-22","1:0","Тайбрек 7:6"],["2026-01-15","10:8","Тайбрек 10:8"],["2026-01-11","3:6"],["2026-01-05","6:3, 6:2"]];
-function importNotebookMatches(){
- if(!ready||!user){alert('Моля, влез с Google и изчакай синхронизацията, преди да импортираш.');return}
- const name='Goro Bocev';let player=players.find(p=>p.name.trim().toLowerCase()===name.toLowerCase())||players.find(p=>/^(жоро|горо)\s+(боцев|боцеф)$/i.test(p.name.trim()));
- const existing=NOTEBOOK_IMPORT.filter(([date])=>matches.some(m=>m.date===date&&player&&m.playerId===player.id));
- const incoming=NOTEBOOK_IMPORT.filter(([date])=>!matches.some(m=>m.date===date&&player&&m.playerId===player.id));
- if(!incoming.length){alert('Всички 21 срещи вече присъстват в дневника.');return}
- if(!confirm('Импорт от Tennis Notebook: '+incoming.length+' нови срещи; '+existing.length+' пропуснати дубликати. Съществуващите мачове няма да бъдат изтрити. Продължаваме ли?'))return;
- if(!player){player={id:crypto.randomUUID(),name};players.push(player)}
- const imported=incoming.map(([date,score,extra])=>({id:crypto.randomUUID(),playerId:player.id,date,surface:'Друга',sets:score.split(', ').map(pair=>pair.split(':').map(Number)),timed:true,notes:'Tennis Notebook import'+(extra?' · '+extra:'')+' · Verify court surface'}));
- matches=[...matches,...imported];save();alert('Импортирани '+imported.length+' срещи. Пропуснати дубликати: '+existing.length+'. Настилката е „Друга“ — можеш да я редактираш.');show('history');
-}
 function exportData(){let blob=new Blob([JSON.stringify({version:2,players,matches,garminActivities,exported:new Date().toISOString()},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='tennis-archive-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
-el('importFile').onchange=async e=>{let f=e.target.files[0];if(!f)return;try{let d=JSON.parse(await f.text());if(!Array.isArray(d.players)||!Array.isArray(d.matches)||!d.matches.every(m=>m.id&&m.playerId&&Array.isArray(m.sets)&&m.sets.every(s=>Array.isArray(s)&&s.length===2&&s.every(n=>Number.isInteger(n)&&n>=0))&&/^\d{4}-\d\d-\d\d$/.test(m.date)))throw Error('Невалиден архив');if(!confirm('Да заменя ли текущите данни с тези от архива?'))return;players=d.players;garminActivities=Array.isArray(d.garminActivities)?d.garminActivities:[];matches=d.matches.map(m=>({...m,sets:(m.sets||[]).map(pair=>Array.isArray(pair)?pair:[pair.mine,pair.theirs])}));save();alert('Архивът е възстановен.')}catch(err){alert('Неуспешно зареждане: '+err.message)}e.target.value=''};
+el('importFile').onchange=async e=>{let f=e.target.files[0];e.target.value="";if(!f||!canEdit())return;const token=session;try{let d=JSON.parse(await f.text());if(token!==session||!canEdit())return;if(!Array.isArray(d.players)||!Array.isArray(d.matches)||!d.matches.every(m=>m.id&&m.playerId&&Array.isArray(m.sets)&&m.sets.every(s=>Array.isArray(s)&&s.length===2&&s.every(n=>Number.isInteger(n)&&n>=0))&&/^\d{4}-\d\d-\d\d$/.test(m.date)))throw Error('Невалиден архив');if(!confirm('Да заменя ли текущите данни с тези от архива?'))return;players=d.players;garminActivities=Array.isArray(d.garminActivities)?d.garminActivities:[];matches=d.matches.map(m=>({...m,sets:(m.sets||[]).map(pair=>Array.isArray(pair)?pair:[pair.mine,pair.theirs])}));if(save())alert('Архивът е възстановен.')}catch(err){if(token===session)alert('Неуспешно зареждане: '+err.message)}};
 ['from','to','filterPlayer','filterSurface'].forEach(id=>el(id).addEventListener('change',renderStats));document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>show(b.dataset.page));
-Object.assign(window,{openMatchDetails,closeMatchDetails,show,newPlayer,deletePlayer,addSet,toggleMatchTiebreak,resetForm,editMatch,deleteMatch,changeMonth,exportData,importNotebookMatches});
+Object.assign(window,{openMatchDetails,closeMatchDetails,show,newPlayer,deletePlayer,addSet,toggleMatchTiebreak,resetForm,editMatch,deleteMatch,changeMonth,exportData});
 el("login").onclick=async()=>{try{await signInWithPopup(auth,new GoogleAuthProvider())}catch(e){status("Грешка при вход: "+e.message)}};
 el("logout").onclick=()=>signOut(auth);
 onAuthStateChanged(auth,u=>{
- if(unsub){unsub();unsub=null}clearTimeout(timer);user=u;ready=false;loading=false;editing=null;matches=[];players=[];renderAll();
- el("login").style.display=u?"none":"inline-block";el("accountInfo").style.display=u?"flex":"none";
- el("accountName").textContent=u?(u.displayName||u.email||"Google потребител"):"";
- if(!u){status("Влез с Google, за да видиш своите мачове.");return}
+ const token=++session;
+ if(unsub){unsub();unsub=null}
+ clearTimeout(timer);
+ user=u;ready=false;busy=false;conflict=false;pending=null;serverCopy=base=undefined;
+ matches=[];players=[];garminActivities=[];hrSeries={};month=new Date();
+ resetDetails();closeDatePopup();resetForm();
+ for(const id of ['importFile','hrImportFile','garminMergeFile','from','to','filterPlayer','filterSurface','trainingYear','trainingMonth'])el(id).value='';
+ for(const id of ['garminImportStatus','hrImportStatus'])el(id).textContent='';
+ el('recoverHr').hidden=true;
+ showRecovery();show('home');renderAll();
+ el('login').style.display=u?'none':'inline-block';
+ el('accountInfo').style.display=u?'flex':'none';
+ el('accountName').textContent=u?(u.displayName||u.email||'Google потребител'):'';
+ if(!u){status('Влез с Google, за да видиш своите мачове.');return}
+
  const uid=u.uid;
- matches=read(scopedKey(KEY));players=read(scopedKey(PK));garminActivities=read(scopedKey('tta_garmin_v1'));renderAll();
- status("Проверка на облака…");
- unsub=onSnapshot(doc(db,"users",uid,"tennis","diary"),snap=>{
-  if(!user||user.uid!==uid)return;
-  if(!snap.exists()){
-   if(!localStorage.getItem("tennis_legacy_checked_"+uid)){
-    localStorage.setItem("tennis_legacy_checked_"+uid,"yes");
-    const legacyMatches=read(KEY),legacyPlayers=read(PK);
-    if(!matches.length&&!players.length&&(legacyMatches.length||legacyPlayers.length)&&confirm("Намерени са данни от старата локална версия. Да ги прехвърля ли към този Google акаунт?")){
-     matches=legacyMatches;players=legacyPlayers;
-     localStorage.setItem(scopedKey(KEY),JSON.stringify(matches));localStorage.setItem(scopedKey(PK),JSON.stringify(players));
-     renderAll();ready=true;sync();return;
-    }
-   }
-   ready=true;status("✓ Синхронизирано");if(matches.length||players.length)sync();return;
+ pending=readObject(scopedKey(DRAFT_KEY));
+ hrSeries=readObject(scopedKey(HR_KEY))||{};
+ el('recoverHr').hidden=!readObject(HR_KEY);
+ const cached={players:read(scopedKey(PK)),matches:read(scopedKey(KEY)),garminActivities:read(scopedKey(GARMIN_KEY))};
+ loadDiary(pending?.data||cached);renderAll();
+ status('Проверка на облака…');
+ if(pending)showRecovery('Има локални промени, които чакат проверка на облака.');
+ unsub=onSnapshot(doc(db,'users',uid,'tennis','diary'),{includeMetadataChanges:true},snapshot=>{
+  if(token!==session||snapshot.metadata.fromCache||snapshot.metadata.hasPendingWrites)return;
+  try{serverCopy=cloudData(snapshot)}
+  catch(error){status(error.message);return}
+  const first=!ready;
+  ready=true;
+  if(pending){
+   if(first)sync();
+   return;
   }
-  const d=snap.data();
-  if(!Array.isArray(d.players)||!Array.isArray(d.matches)){status("Невалиден облачен архив");return}
-  loading=true;players=d.players;garminActivities=Array.isArray(d.garminActivities)?d.garminActivities:[];matches=d.matches.map(m=>({...m,sets:(m.sets||[]).map(pair=>Array.isArray(pair)?pair:[pair.mine,pair.theirs])}));
-  localStorage.setItem(scopedKey(KEY),JSON.stringify(matches));localStorage.setItem(scopedKey(PK),JSON.stringify(players));
-  renderAll();loading=false;ready=true;status("✓ Синхронизирано");
- },e=>status("Firestore: "+e.message));
+  if(first&&!serverCopy){
+   const hasCached=cached.matches.length||cached.players.length||cached.garminActivities.length;
+   const legacy={players:read(PK),matches:read(KEY),garminActivities:[]};
+   const legacyKey='tennis_legacy_checked_'+uid;
+   const recover=hasCached?cached:!localStorage.getItem(legacyKey)&&(legacy.matches.length||legacy.players.length)?legacy:null;
+   if(recover&&confirm('Намерени са локални данни, а облачният архив е празен. Да ги възстановя ли в този Google акаунт?')){
+    base=signature(null);loadDiary(recover);save();return;
+   }
+   if(recover===legacy)localStorage.setItem(legacyKey,'yes');
+   // Keep older cached data available for a future explicit recovery.
+   if(hasCached){base=signature(null);loadDiary(null);renderAll();status('Облачният архив е празен.');return}
+  }
+  applyCloud(serverCopy);status('✓ Синхронизирано');
+ },error=>{if(token===session)status('Firestore: '+error.message)});
 });
 
 function renderGarminSummary(){const node=el('garminActivitySummary');if(node)node.textContent=matches.filter(m=>m.garmin).length+' мача с Garmin · '+garminActivities.length+' други активности';renderTraining();}
@@ -144,7 +263,7 @@ function renderTraining(){
  const list=el('trainingList');if(!list)return;
  const combined=[...garminActivities.map(a=>({...a,linked:false})),...matches.filter(m=>m.garmin).map(m=>({...m.garmin,linked:true,match:m,date:m.garmin.date||m.date}))];
  const year=el('trainingYear'),month=el('trainingMonth');
- const years=[...new Set(combined.map(a=>String(a.date||'').slice(0,4)).filter(y=>/^\\d{4}$/.test(y)))].sort().reverse();
+ const years=[...new Set(combined.map(a=>String(a.date||'').slice(0,4)).filter(y=>/^\d{4}$/.test(y)))].sort().reverse();
  const currentYear=year.value;year.innerHTML='<option value="">Всички</option>'+years.map(y=>'<option value="'+y+'">'+y+'</option>').join('');year.value=years.includes(currentYear)?currentYear:'';
  if(!month.options.length||month.options.length===1){month.innerHTML='<option value="">Всички</option>'+Array.from({length:12},(_,i)=>'<option value="'+String(i+1).padStart(2,'0')+'">'+String(i+1).padStart(2,'0')+'</option>').join('');}
  const selected=combined.filter(a=>(!year.value||String(a.date).startsWith(year.value))&&(!month.value||String(a.date).slice(5,7)===month.value)).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
@@ -159,8 +278,34 @@ function renderTraining(){
 el('trainingYear').addEventListener('change',renderTraining);
 el('trainingMonth').addEventListener('change',renderTraining);
 
-el('hrImportFile').onchange=async e=>{const file=e.target.files?.[0];if(!file)return;try{const data=JSON.parse(await file.text());if(data.version!==1||!data.activities||typeof data.activities!=='object')throw Error('Невалиден файл');hrSeries=data.activities;localStorage.setItem('tennis_hr_series_v1',JSON.stringify(hrSeries));el('hrImportStatus').textContent='✓ Заредени графики за '+Object.keys(hrSeries).length+' тенис активности в този браузър.';}catch(err){el('hrImportStatus').textContent='Грешка: '+err.message}finally{e.target.value=''}};
-el('garminMergeFile').onchange=async e=>{const file=e.target.files?.[0];if(!file)return;try{if(!user||!ready)throw Error('Първо влез с Google и изчакай синхронизацията.');const d=JSON.parse(await file.text());if(!Array.isArray(d.matches)||!Array.isArray(d.unlinked_tennis_activities)||!d.matches.every(m=>m.id&&m.garmin&&m.garmin.id))throw Error('Избери tennis_matches_garmin_merged.json');const byId=new Map(d.matches.map(m=>[m.id,m]));let linked=0;matches=matches.map(m=>{const incoming=byId.get(m.id);if(!incoming)return m;linked++;return {...m,garmin:incoming.garmin};});const ids=new Set(garminActivities.map(a=>String(a.id)));let added=0;for(const a of d.unlinked_tennis_activities){if(!a.id||ids.has(String(a.id)))continue;garminActivities.push(a);ids.add(String(a.id));added++}save();el('garminImportStatus').textContent='✓ Свързани '+linked+' съществуващи мача; добавени '+added+' нови активности. Данните се синхронизират.';renderGarminSummary();}catch(err){el('garminImportStatus').textContent='Грешка: '+err.message}finally{e.target.value=''}};
+el('hrImportFile').onchange=async e=>{
+ const file=e.target.files?.[0];e.target.value='';
+ if(!file)return;
+ if(!user){el('hrImportStatus').textContent='Влез с Google, за да импортираш HR графики.';return}
+ const token=session;
+ try{
+  const data=JSON.parse(await file.text());
+  if(token!==session)return;
+  if(data.version!==1||!data.activities||typeof data.activities!=='object'||Array.isArray(data.activities))throw Error('Невалиден файл');
+  localStorage.setItem(scopedKey(HR_KEY),JSON.stringify(data.activities));
+  hrSeries=data.activities;
+  el('hrImportStatus').textContent='✓ Заредени графики за '+Object.keys(hrSeries).length+' тенис активности за този акаунт.';
+ }catch(error){if(token===session)el('hrImportStatus').textContent='Грешка: '+error.message}
+};
+el('recoverHr').onclick=()=>{
+ if(!user||!ready)return;
+ const legacy=readObject(HR_KEY)||{};
+ const linkedIds=new Set(matches.filter(m=>m.garmin?.id!=null).map(m=>String(m.garmin.id)));
+ const linked=Object.fromEntries(Object.entries(legacy).filter(([id])=>linkedIds.has(id)));
+ if(!Object.keys(linked).length){el('hrImportStatus').textContent='Няма стари HR графики за свързаните мачове.';return}
+ if(!confirm('Да копирам ли старите HR графики, които съвпадат със свързани мачове в този акаунт?'))return;
+ const combined={...linked,...hrSeries};
+ try{
+  localStorage.setItem(scopedKey(HR_KEY),JSON.stringify(combined));hrSeries=combined;
+  el('hrImportStatus').textContent='✓ HR графиките са възстановени за този акаунт.';
+ }catch(error){el('hrImportStatus').textContent='Грешка: '+error.message}
+};
+el('garminMergeFile').onchange=async e=>{const file=e.target.files?.[0];e.target.value='';if(!file||!canEdit())return;const token=session;try{const d=JSON.parse(await file.text());if(token!==session||!canEdit())return;if(!Array.isArray(d.matches)||!Array.isArray(d.unlinked_tennis_activities)||!d.matches.every(m=>m.id&&m.garmin&&m.garmin.id))throw Error('Избери tennis_matches_garmin_merged.json');const byId=new Map(d.matches.map(m=>[m.id,m]));let linked=0;matches=matches.map(m=>{const incoming=byId.get(m.id);if(!incoming)return m;linked++;return {...m,garmin:incoming.garmin};});const ids=new Set(garminActivities.map(a=>String(a.id)));let added=0;for(const a of d.unlinked_tennis_activities){if(!a.id||ids.has(String(a.id)))continue;garminActivities.push(a);ids.add(String(a.id));added++}save();el('garminImportStatus').textContent='✓ Свързани '+linked+' съществуващи мача; добавени '+added+' нови активности. Данните се синхронизират.';renderGarminSummary();}catch(err){if(token===session)el('garminImportStatus').textContent='Грешка: '+err.message}};
 resetForm();renderAll();renderGarminSummary();
 </script><script>
 const dateIds=['matchDate','from','to'];let activeCalendar=null;
@@ -205,6 +350,28 @@ const langButton=document.getElementById('languageToggle');
 const originals=new WeakMap();
 let language=localStorage.getItem('tennis_language')==='bg'?'bg':'en';
 let scheduled=false;
+translations.push(
+ ['Облачното качване на FIT файлове е недостъпно на текущия Firebase Spark план. Можеш да отвориш FIT файл локално в Garmin анализатора.','FIT cloud upload is unavailable on the current Firebase Spark plan. Open FIT files locally in the Garmin analyzer.'],
+ ['Повтори синхронизацията','Retry sync'],['Изтегли локално копие','Download local copy'],['Зареди облачното копие','Load cloud copy'],
+ ['Конфликт при синхронизация.','Sync conflict.'],['Грешка при синхронизация.','Sync failed.'],
+ ['Облачното копие е променено. Локалните промени са запазени в този браузър. Изтегли ги, преди да заредиш облачното копие.','The cloud copy has changed. Your edits are saved in this browser. Download them before loading the cloud copy.'],
+ ['Промените са запазени в този браузър. Повтори синхронизацията при връзка.','Your edits are saved in this browser. Retry sync when online.'],
+ ['Има локални промени, които чакат проверка на облака.','Local changes are waiting for a cloud check.'],
+ ['Възстанови локални HR графики за свързаните мачове','Recover local heart rate charts for linked matches'],
+ ['Дневникът е променен в друг раздел. Презареди страницата.','The diary changed in another tab. Reload this page.'],
+ ['Влез с Google и изчакай проверката на облака.','Sign in with Google and wait for the cloud check.'],
+ ['Да заредя ли облачното копие? Локалните промени ще останат в резервно копие в този браузър.','Load the cloud copy? Your edits will be kept in a backup in this browser.'],
+ ['Заредено е облачното копие.','Cloud copy loaded.'],
+ ['Намерени са локални данни, а облачният архив е празен. Да ги възстановя ли в този Google акаунт?','Local data was found and the cloud archive is empty. Restore it to this Google account?'],
+ ['Облачният архив е празен.','The cloud archive is empty.'],
+ ['Мачът е променен в облака. Отвори го отново за редакция.','This match changed in the cloud. Open it again to edit it.'],
+ ['Влез с Google, за да импортираш HR графики.','Sign in with Google to import heart rate charts.'],
+ ['Няма стари HR графики за свързаните мачове.','No older heart rate charts match the linked matches.'],
+ ['Да копирам ли старите HR графики, които съвпадат със свързани мачове в този акаунт?','Copy older heart rate charts for linked matches in this account?'],
+ ['✓ HR графиките са възстановени за този акаунт.','✓ Heart rate charts recovered for this account.'],
+ ['Грешка: няма място за локално запазване.','Error: not enough local storage.'],
+ ['Грешка: резервното копие не е завършено.','Error: the backup could not be saved.']
+);
 const ordered=[...translations].sort((a,b)=>b[0].length-a[0].length);
 function translate(value){let out=value;for(const [bg,en] of ordered)out=out.split(bg).join(en);return out}
 function paint(){

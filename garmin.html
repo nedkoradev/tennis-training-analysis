@@ -113,6 +113,9 @@ function demo(){
  $("status").textContent="Демо данни – не са от Garmin файл."
 }
 
+function chooseFitFiles(files){
+ return Array.from(files).filter(file=>/\.fit$/i.test(file.name));
+}
 async function parseFit(file){
  $("status").textContent="Чета FIT файла…";
  const buf=await file.arrayBuffer(),u=new Uint8Array(buf),dv=new DataView(buf);
@@ -147,7 +150,7 @@ async function parseFit(file){
  const ts=s[2]??records[0]?.[253]??s[253],date=ts!=null?new Date((ts+631065600)*1000).toLocaleString("bg-BG"):"—";
  return {key:file.name+"-"+file.size+"-"+file.lastModified,date,duration,avgHr:avg,maxHr:max,calories,aerobic:s[24]!=null&&s[24]!==255?(s[24]/10).toFixed(1):null,anaerobic:s[137]!=null&&s[137]!==255?(s[137]/10).toFixed(1):null,load:s[168]!=null&&Number.isFinite(s[168])?Math.round(s[168]/65536):null,hr,dt}
 }
-$("fitFile").addEventListener("change",async e=>{let f=e.target.files[0];if(!f)return;try{let x=await parseFit(f);render(x);$("status").textContent=`Зареден: ${f.name}. Калории и дата се извличат от FIT. Training Effect се прочита от Garmin session. Exercise Load се извлича от FIT session поле 168 (скала 65536).`}catch(err){$("status").textContent="Не успях да прочета този FIT файл: "+err.message+" Качи файла тук в ChatGPT и ще адаптирам parser-а към него."}});
+$("fitFile").addEventListener("change",async e=>{if(!e.target.files.length)return;const [f]=chooseFitFiles(e.target.files);if(!f){$("status").textContent="Избери файл с разширение .fit.";return}try{let x=await parseFit(f);render(x);$("status").textContent=`Зареден: ${f.name}. Калории и дата се извличат от FIT. Training Effect се прочита от Garmin session. Exercise Load се извлича от FIT session поле 168 (скала 65536).`}catch(err){$("status").textContent="Не успях да прочета този FIT файл: "+err.message+" Качи файла тук в ChatGPT и ще адаптирам parser-а към него."}});
 $("demoBtn").onclick=demo;$("clearBtn").onclick=()=>{if(confirm("Да изтрия ли локалната история?")){localStorage.removeItem("tennisHistory");renderHistory()}};
 renderHistory();
 </script>
