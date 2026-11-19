@@ -317,3 +317,33 @@ test('slow sync keeps a second local edit queued without replacing it with a sna
   assert.equal(remote.documents.get(ref('a')).matches.length, 2);
   assert.equal(view.storage.has(pendingKey('a')), false);
 });
+
+test('home renders the six latest matches and preserves the full history', () => {
+  const remote = cloud();
+  const matches = [2, 7, 1, 5, 3, 6, 4].map(day => ({
+    id: 'match-' + day,
+    playerId: 'p1',
+    date: '2026-01-0' + day,
+    sets: [[6, 4], [6, 7]],
+    matchTiebreak: [12, 10],
+    garmin: { avg_hr: 139 },
+  }));
+  const view = client(remote);
+  connect(view, remote);
+  assert.match(view.element('recent').innerHTML, /Последните ти мачове/);
+
+  remote.documents.set(ref('a'), diary({ matches }));
+  remote.emit(ref('a'));
+  const recent = view.element('recent');
+  const ids = [...recent.innerHTML.matchAll(/data-match-id="(.*?)"/g)].map(match => match[1]);
+  assert.deepEqual(ids, [7, 6, 5, 4, 3, 2].map(day => 'match-' + day));
+  assert.match(recent.innerHTML, /6:4, 6:7, TB 12:10/);
+  assert.equal((view.element('historyList').innerHTML.match(/class="match-tile"/g) || []).length, 7);
+  recent.onclick({ target: { closest: () => ({ dataset: { matchId: 'match-7' } }) } });
+  assert.equal(view.element('matchDetails').open, true);
+  assert.match(view.element('matchDetailsBody').innerHTML, /139 bpm/);
+
+  remote.documents.set(ref('a'), diary({ matches: matches.slice(0, 2) }));
+  remote.emit(ref('a'));
+  assert.equal((recent.innerHTML.match(/class="recent-match"/g) || []).length, 2);
+});
