@@ -30,10 +30,10 @@ input[type=date]{color-scheme:dark;min-width:0}.date-control{display:flex;gap:8p
 #cloudStatus {
   grid-column: 1 / -1;
   min-inline-size: 0;
-  block-size: 48px;
+  max-block-size: calc(3em + 6px);
   overflow: auto;
   overflow-wrap: anywhere;
-  padding: 4px 12px;
+  padding: 2px 12px;
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
   background: var(--surface);
@@ -96,10 +96,26 @@ input[type=date]{color-scheme:dark;min-width:0}.date-control{display:flex;gap:8p
 #recent .result { font-size: 16px; font-variant-numeric: tabular-nums; }
 @media (max-width: 599px) {
   .wrap:has(> .diary-header) { padding: 12px; }
-  .diary-account { display: contents; }
-  #accountInfo, #login { grid-column: 1 / -1; justify-content: space-between; }
-  #login { justify-self: start; }
-  .diary-nav button { padding-inline: 4px; }
+  .diary-header { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .diary-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 8px; }
+  .diary-header h1 { min-inline-size: 0; }
+  .diary-account { justify-self: stretch; justify-content: space-between; flex-wrap: nowrap; }
+  #accountInfo { flex: 1; flex-wrap: nowrap; }
+  #accountName { min-inline-size: 0; font-size: 12px; line-height: 1.5; }
+  .diary-nav { gap: 4px; margin: 8px 0; }
+  .diary-nav button { padding-block: 4px; }
+  .home-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 8px; }
+  .home-actions > * { text-align: center; }
+  #overview .card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 4px;
+  }
+  #overview small { line-height: 1.5; }
+  #home .recent-card { margin-top: 8px; }
+  #recent .match-tile { line-height: 1.25; }
+  #recent .result { margin: 2px 0; }
 }
 @media (min-width: 600px) {
   .wrap:has(> .diary-header) { padding: 16px; }
@@ -114,9 +130,9 @@ input[type=date]{color-scheme:dark;min-width:0}.date-control{display:flex;gap:8p
   #overview .num { font-size: 30px; }
 }
 </style></head><body><div class="wrap"><header class="diary-header">
-  <div>
+  <div class="diary-title">
     <h1><span aria-hidden="true">🎾</span> Моят тенис дневник</h1>
-    <small>v1.5.0</small>
+    <small>v1.5.1</small>
   </div>
   <div class="diary-account">
     <button type="button" id="languageToggle" class="secondary" aria-label="Change language">BG</button>
