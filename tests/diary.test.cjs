@@ -87,6 +87,7 @@ function client(remote, storage = new Map()) {
       createElement: () => ({ querySelector: () => ({}), querySelectorAll: () => [input(), input()], click() {} }),
     },
     window: { scrollTo() {}, addEventListener() {} },
+    navigator: { onLine: true },
     localStorage: {
       getItem: key => storage.get(key) ?? null,
       setItem: (key, value) => storage.set(key, value),
@@ -346,4 +347,40 @@ test('home renders the eight latest matches and preserves the full history', () 
   remote.documents.set(ref('a'), diary({ matches: matches.slice(0, 2) }));
   remote.emit(ref('a'));
   assert.equal((recent.innerHTML.match(/class="recent-match"/g) || []).length, 2);
+});
+
+test('sync badge requires an online server confirmation and clears during pending work or a conflict', async () => {
+  const remote = cloud();
+  const view = client(remote);
+  const badge = view.element('syncBadge');
+  view.auth('a');
+  assert.equal(badge.hidden, true);
+  remote.documents.set(ref('a'), diary());
+  remote.emit(ref('a'), { fromCache: true });
+  assert.equal(badge.hidden, true);
+  remote.emit(ref('a'));
+  assert.equal(badge.hidden, false);
+  assert.equal(view.element('cloudStatus').textContent, 'Синхронизирано');
+  remote.emit(ref('a'), { hasPendingWrites: true });
+  assert.equal(badge.hidden, true);
+
+  view.run('navigator.onLine = false');
+  remote.emit(ref('a'));
+  assert.equal(badge.hidden, true);
+  view.run('navigator.onLine = true');
+  remote.emit(ref('a'));
+  assert.equal(badge.hidden, false);
+  view.form([[6, 1]], null);
+  assert.equal(badge.hidden, true);
+  await view.run('sync()');
+  assert.equal(badge.hidden, false);
+
+  view.form([[6, 2]], null);
+  remote.documents.set(ref('a'), diary({ updatedAt: 'external change' }));
+  await view.run('sync()');
+  assert.equal(badge.hidden, true);
+  assert.match(view.element('cloudStatus').textContent, /Конфликт/);
+  view.auth(null);
+  assert.equal(badge.hidden, true);
+  assert.equal(view.element('accountInfo').style.display, 'none');
 });
